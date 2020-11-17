@@ -10,11 +10,11 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
-//@Getter@Setter//retira a necessidad de criar funções gets e sets (para usar os metodos na ide é necessario instalar plugin lombok na ide).
-@Data//Alem de gets e sets, cria toString e contrutos com parametros  obrigatórios
+//@Getter@Setter//retira a necessidade de criar funções gets e sets (para usar os metodos na ide é necessario instalar plugin lombok na ide).
+@Data//Alem de gets e sets, cria toString e construtor sem e com parametros  obrigatórios
 @NoArgsConstructor//Construtor vazio
-@AllArgsConstructor//Gera um cnstrutor com todos argumentos
-@Builder
+@AllArgsConstructor//Gera um construtor com todos argumentos
+@Builder//Da acesso ao builder da classe
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
