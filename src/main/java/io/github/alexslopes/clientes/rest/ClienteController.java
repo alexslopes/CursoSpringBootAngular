@@ -47,7 +47,7 @@ public class ClienteController {
                 orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado") );
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}")//Utilizado para atualizar recurso
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void atualizar( @PathVariable Integer id, @RequestBody @Valid Cliente clienteAtualizado ) {
         repository.findById(id).
