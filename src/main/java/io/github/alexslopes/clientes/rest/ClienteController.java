@@ -11,6 +11,7 @@ import javax.validation.Valid;
 
 @RestController//Responsável por ter retorno rest
 @RequestMapping("/api/clientes")
+@CrossOrigin("http://localhost:4200")
 public class ClienteController {
 
     private final ClienteRepository repository;
