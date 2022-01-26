@@ -5,25 +5,26 @@ import io.github.alexslopes.clientes.model.entity.ServicoPrestado;
 import io.github.alexslopes.clientes.model.repository.ClienteRepository;
 import io.github.alexslopes.clientes.model.repository.ServicoPrestadoRepository;
 import io.github.alexslopes.clientes.rest.dto.ServicoPrestadoDto;
+import io.github.alexslopes.clientes.utils.BigDecimalConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/servicos-prestados")
 @RequiredArgsConstructor
+@ResponseStatus(HttpStatus.CREATED)
 public class ServicoPrestaoController {
 
     private final ClienteRepository clienteRepository;
     private final ServicoPrestadoRepository repository;
+    private final BigDecimalConverter bigDecimalConverter;
 
     @PostMapping
     public ServicoPrestado salvar(@RequestBody ServicoPrestadoDto dto) {
@@ -41,6 +42,15 @@ public class ServicoPrestaoController {
         servicoPrestado.setDescricao(dto.getDescricao());
         servicoPrestado.setData(data);
         servicoPrestado.setCliente(cliente);
-        servicoPrestado.setValor( );
+        servicoPrestado.setValor( bigDecimalConverter.converter(dto.getPreco()) );
+
+        return repository.save(servicoPrestado);
+    }
+
+    @GetMapping//required = false: Nao obriga passar o parametro nome na requisição
+    public List<ServicoPrestado> pesquisar(@RequestParam(value = "nome", required = false, defaultValue = "")String nome,
+                                           @RequestParam(value = "mes", required = false) Integer mes)
+    {
+        return repository.findByNomeClienteAndMes("%" + nome + "%", mes);
     }
 }
