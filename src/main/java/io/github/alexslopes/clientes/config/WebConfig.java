@@ -16,7 +16,7 @@ public class WebConfig {
 
     @Bean
     public FilterRegistrationBean<CorsFilter> corsFilterFilterRegistrationBean (){
-        List<String> all = Arrays.asList("*");
+        List<String> all = Arrays.asList("*");//Mapea para todos
 
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowedOrigins(all);
@@ -25,10 +25,10 @@ public class WebConfig {
         corsConfiguration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", corsConfiguration);
-        CorsFilter corsFilter = new CorsFilter(source);
-        FilterRegistrationBean<CorsFilter> filter = new FilterRegistrationBean<>(corsFilter);
-        filter.setOrder(Ordered.HIGHEST_PRECEDENCE);
+        source.registerCorsConfiguration("/**", corsConfiguration);//configura as url
+        CorsFilter corsFilter = new CorsFilter(source);//Filtro dos cors
+        FilterRegistrationBean<CorsFilter> filter = new FilterRegistrationBean<>(corsFilter);//Registra o cors filters com a url
+        filter.setOrder(Ordered.HIGHEST_PRECEDENCE);//Define a prioridade do filtro
 
         return filter;
     }
