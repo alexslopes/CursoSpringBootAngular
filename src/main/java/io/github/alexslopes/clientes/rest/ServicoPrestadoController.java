@@ -19,14 +19,15 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/servicos-prestados")
 @RequiredArgsConstructor
-@ResponseStatus(HttpStatus.CREATED)
-public class ServicoPrestaoController {
+@CrossOrigin("http://localhost:4200")
+public class ServicoPrestadoController {
 
     private final ClienteRepository clienteRepository;
     private final ServicoPrestadoRepository repository;
     private final BigDecimalConverter bigDecimalConverter;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public ServicoPrestado salvar(@RequestBody ServicoPrestadoDto dto) {
         LocalDate data = LocalDate.parse(dto.getData(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         Integer idCliente = dto.getIdCliente();
