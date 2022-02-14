@@ -15,7 +15,7 @@ public class Usuario {
     private Integer id;
 
     @Column(unique = true, name = "login")
-    private String usernamer;
+    private String username;
 
     @Column(unique = true, name = "senha")
     private String password;
