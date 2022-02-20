@@ -9,11 +9,11 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
-    @Override
+    @Override//Configuraçao  de acesso as API's
     public void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-            .antMatchers("/api/usuarios").permitAll()
+            .antMatchers("/api/usuarios").permitAll()//é possível delimitar perfil de usuário usando hasRole("Perfil)/hasAnyRole em vez de permitAll
             .antMatchers("api/clientes/**",
                                     "/api/servicos-prestados").authenticated()
                 .anyRequest().denyAll();
