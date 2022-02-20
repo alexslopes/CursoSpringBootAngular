@@ -19,7 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 inMemoryAuthentication()
                 .withUser("fulano")
                 .password("123")
-                .roles("USER");
+                .roles("USER");//Perfil de usuário
     }
 
     @Bean
@@ -34,7 +34,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors()//habilita o cors
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);//Significa que a aplicação não vai guardar sessão, ja que vai manter com token
-
-
     }
 }
