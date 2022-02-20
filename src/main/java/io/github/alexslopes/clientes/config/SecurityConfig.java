@@ -13,7 +13,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Override
+    @Override//AuthenticationManagerBuilder: classe cria o gerenciamento de autenticaçao na aplição
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.
                 inMemoryAuthentication()
@@ -22,15 +22,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .roles("USER");//Perfil de usuário
     }
 
-    @Bean
+    @Bean//Faz o gerenciamento e autenticação de usuários
     public AuthenticationManager authenticationManager() throws Exception {
         return super.authenticationManager();
     }
 
-    @Override
+    @Override//Faz autoprizaçao de url, configurar sessao, cors....
     protected void configure(HttpSecurity http) throws Exception {
         http.
-            csrf().disable()//csrf usada quando a aplicação web é aclopada ao springboot
+            csrf().disable()//csrf usada quando a aplicação web é aclopada ao springboot, vem habilitado por padrão
                 .cors()//habilita o cors
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);//Significa que a aplicação não vai guardar sessão, ja que vai manter com token
