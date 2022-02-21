@@ -14,7 +14,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         http
             .authorizeRequests()
             .antMatchers("/api/usuarios").permitAll()//é possível delimitar perfil de usuário usando hasRole("Perfil)/hasAnyRole em vez de permitAll
-            .antMatchers("api/clientes/**",
+            .antMatchers("/api/clientes/**",
                                     "/api/servicos-prestados").authenticated()
                 .anyRequest().denyAll();
     }
