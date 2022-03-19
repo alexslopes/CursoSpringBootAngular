@@ -1,14 +1,14 @@
 package io.github.alexslopes.clientes.rest.dto;
 
 import lombok.Data;
-import org.springframework.web.bind.annotation.RequestMapping;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 
 @Data
-@RequestMapping("/api/servicos-prestados")
+@NoArgsConstructor//Cria construtor sem parametros
 public class ServicoPrestadoDto {
     @NotEmpty(message = "{campo.descricao.obrigatorio}")
     private String descricao;
