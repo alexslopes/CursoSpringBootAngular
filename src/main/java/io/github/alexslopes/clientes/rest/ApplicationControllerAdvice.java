@@ -32,7 +32,7 @@ public class ApplicationControllerAdvice {
     //ResponseEntity: retorna objeto da forma que deseja ex: como corpo da resposta, codigo de status...
     @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity handlerResponseStatusException(ResponseStatusException ex){
-        String mensagemErro = ex.getMessage();
+        String mensagemErro = ex.getReason();//Retorna apenas a mensagem sem o código de erro
         HttpStatus codigoStatus = ex.getStatus();
         ApiErrors apiErrors = new ApiErrors(mensagemErro);
         return new ResponseEntity(apiErrors, codigoStatus);
