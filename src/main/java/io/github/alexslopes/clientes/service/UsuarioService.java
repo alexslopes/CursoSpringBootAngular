@@ -1,6 +1,6 @@
 package io.github.alexslopes.clientes.service;
 
-import io.github.alexslopes.cliente.exception.UsuarioCadastradoException;
+import io.github.alexslopes.clientes.exception.UsuarioCadastradoException;
 import io.github.alexslopes.clientes.model.entity.Usuario;
 import io.github.alexslopes.clientes.model.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;

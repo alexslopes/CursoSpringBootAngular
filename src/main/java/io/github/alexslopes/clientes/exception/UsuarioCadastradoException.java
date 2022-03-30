@@ -1,8 +1,8 @@
-package io.github.alexslopes.cliente.exception;
+package io.github.alexslopes.clientes.exception;
 
 public class UsuarioCadastradoException extends RuntimeException{
 
     public UsuarioCadastradoException(String login){
-        super("Usuário já cadastrado para o login" + login);
+        super("Usuário já cadastrado para o login " + login);
     }
 }
