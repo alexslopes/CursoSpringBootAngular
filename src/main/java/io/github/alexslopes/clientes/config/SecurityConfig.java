@@ -43,6 +43,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean//Faz a codificação e decodificação da senha
     public PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
+        return NoOpPasswordEncoder.getInstance();//Não modifica a senha
     }
 }
